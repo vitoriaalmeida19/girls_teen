@@ -1,13 +1,62 @@
-resultWorkerErr := make(chan error)
-defer close(resultWorkerErr)
-go func() {
-	defer cancel()
-	resultWorkerErr <- b.resultWorker(ctx)
-}()
-
-err := b.worker(ctx)
-cancel()
-if err == nil {
-	return <-resultWorkerErr
+/* Definindo a fonte e o estilo geral da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
 }
-return multierror.Append(err, <-resultWorkerErr)
+
+/* Título principal */
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+  color: #f57c00; /* cor laranja */
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+/* Imagem do bolo */
+img {
+  display: block;
+  margin: 20px auto;
+  width: 50%; /* Reduz o tamanho da imagem */
+  border-radius: 8px;
+}
+
+/* Estilizando a lista de ingredientes */
+p {
+  font-size: 1.1em;
+  margin: 10px;
+  line-height: 1.5;
+}
+
+/* Título dos ingredientes */
+p:nth-of-type(1) {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+/* Estilizando o modo de preparo */
+p:nth-of-type(9) {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+/* Separando as etapas de modo de preparo */
+p:nth-of-type(2),
+p:nth-of-type(3),
+p:nth-of-type(4),
+p:nth-of-type(5),
+p:nth-of-type(6),
+p:nth-of-type(7),
+p:nth-of-type(8),
+p:nth-of-type(10) {
+  margin-left: 20px;
+  font-style: italic;
+}
+
+/* Margem final para o conteúdo */
+body {
+  margin: 20px;
+}
